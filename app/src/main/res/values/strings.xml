@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DraftBook</string>
+    <string name="draft_title_example">This is title of my draft!</string>
+    <string name="draft_text_example">This is text of my draft. Here I will put my very interesting text. Trust me.</string>
+</resources>
