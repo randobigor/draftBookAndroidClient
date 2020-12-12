@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DraftBook"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DraftActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="DraftACtivity"/>
+        <activity android:name=".DraftAddActivity"></activity>
+        <activity
+            android:name=".DraftActivity"
+            android:label="DraftACtivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

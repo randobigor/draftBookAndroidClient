@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,25 +24,43 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewResult;
     ApiInterface apiInterface;
     RecyclerView recyclerView;
-    List<Draft> drafts;
-
+    Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         getInfo(this);
 
+        addButton = findViewById(R.id.addButtonActivity);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAddDraftActivity();
+            }
+        });
     }
 
-    public void getInfo(Context ct){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getInfo(this);
+    }
+
+    public void goToAddDraftActivity() {
+        Intent intent = new Intent(this, DraftAddActivity.class);
+        startActivity(intent);
+    }
+
+    public void getInfo(Context ct) {
         Call<List<Draft>> call = apiInterface.getDrafts();
         call.enqueue(new Callback<List<Draft>>() {
             @Override
             public void onResponse(Call<List<Draft>> call, Response<List<Draft>> response) {
-                if(!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     return;
                 }
 
@@ -57,64 +77,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public void getInfo(View v){
-//        Call<List<Draft>> call = apiInterface.getDrafts();
-//        call.enqueue(new Callback<List<Draft>>() {
-//            @Override
-//            public void onResponse(Call<List<Draft>> call, Response<List<Draft>> response) {
-//                if(!response.isSuccessful()){
-//                    textViewResult.setText(response.code());
-//                    return;
-//                }
-//
-//                List<Draft> drafts = response.body();
-//                for(Draft draft: drafts){
-//                    String content = "";
-//                    content += draft.getId() + "\n";
-//                    content += draft.getTitle() + "\n";
-//                    content += draft.getText() + "\n\n";
-//
-//                    textViewResult.append(content);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Draft>> call, Throwable t) {
-//                textViewResult.setText(t.getMessage());
-//            }
-//        });
-//    }
-
-//    public void getOneDraft(View v){
-//        Call<Draft> call = apiInterface.getDraftById(2);
-//        call.enqueue(new Callback<Draft>() {
-//            @Override
-//            public void onResponse(Call<Draft> call, Response<Draft> response) {
-//
-//                textViewResult.setText(response.body().getTitle() + "\n" + response.body().getText());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Draft> call, Throwable t) {
-//
-//            }
-//        });
-//    }
-
-//    public void createDraft(View v){
-//        Draft draft = new Draft("This title is generated in app", "Hello world my name is Dinesh!");
-//        Call<Draft> postCall = apiInterface.createDraft(draft);
-//        postCall.enqueue(new Callback<Draft>() {
-//            @Override
-//            public void onResponse(Call<Draft> call, Response<Draft> response) {
-//                Log.e("RESPONSE", response.body().toString());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Draft> call, Throwable t) {
-//
-//            }
-//        });
-//    }
 }

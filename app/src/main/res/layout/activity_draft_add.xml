@@ -8,13 +8,12 @@
     tools:context=".DraftActivity">
 
     <EditText
-        android:id="@+id/editTitle"
+        android:id="@+id/addTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:maxLength="100"
         android:inputType="text"
-        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,19 +21,18 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/addText"
         android:layout_width="match_parent"
         android:maxLength="250"
         android:layout_height="wrap_content"
         android:minHeight="440dp"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:background="@android:color/transparent"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/addTitle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="394dp"
@@ -43,29 +41,17 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/saveButton"
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/button_success"
+            android:background="@drawable/button_primary"
             android:text="SAVE"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.947"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/deleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/button_danger"
-            android:text="Delete"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -22,4 +23,7 @@ public interface ApiInterface {
 
     @PUT("draft/{id}")
     Call<Draft> updateDraft(@Path("id") int id, @Body Draft draft);
+
+    @DELETE("draft/{id}")
+    Call<Draft> deleteDraft(@Path("id") int id);
 }

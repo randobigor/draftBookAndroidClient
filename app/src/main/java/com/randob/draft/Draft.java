@@ -16,7 +16,6 @@ public class Draft {
         return id;
     }
 
-
     public String getTitle() {
         return title;
     }

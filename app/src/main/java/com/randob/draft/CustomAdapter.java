@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -21,7 +22,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     List<Draft> drafts;
     Context context;
-    String colors[] = {"#2ecc71", "#3498db", "#9b59b6", "#f1c40f", "#e74c3c"};
 
     public CustomAdapter(Context ct, List<Draft> drafts){
         this.context = ct;
@@ -48,12 +48,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 Intent intent = new Intent(context, DraftActivity.class);
                 intent.putExtra("title", drafts.get(position).getTitle());
                 intent.putExtra("text", drafts.get(position).getText());
+                intent.putExtra("id", Integer.toString(drafts.get(position).getId()));
                 context.startActivity(intent);
             }
         });
-//        holder.card.setCardBackgroundColor(Color.parseColor("#e74c3c"));
-//        Random random = new Random();
-//        holder.card.setCardBackgroundColor(Color.parseColor(colors[random.nextInt(colors.length)]));
     }
 
     @Override
